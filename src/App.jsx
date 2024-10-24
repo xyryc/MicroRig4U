@@ -1,7 +1,11 @@
+import Cases from "./components/Cases";
+import Header from "./components/Header";
+
 const App = () => {
   return (
-    <div>
-      <h1 className="font-fira-code">Hello</h1>
+    <div className="container mx-auto px-4 font-fira-code">
+      <Header/>
+      <Cases />
     </div>
   );
 };
