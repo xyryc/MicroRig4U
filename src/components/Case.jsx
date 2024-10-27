@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Case = ({ caseItem }) => {
+const Case = ({ caseItem, handleCart }) => {
   const {
     product_image,
     product_name,
@@ -43,15 +43,28 @@ const Case = ({ caseItem }) => {
       <p className="tracking-tighter font-medium">
         Price: <span className="font-light">{price} BDT</span>
       </p>
-      <button className="btn rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400">
-        Add to Cart
-      </button>
+
+      <div className="flex gap-6 items-center pt-2">
+        <button className="btn rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400">
+          Buy Now
+        </button>
+
+        <button
+          onClick={() => {
+            handleCart(caseItem);
+          }}
+          className="btn rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400"
+        >
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 };
 
 Case.propTypes = {
   caseItem: PropTypes.object.isRequired,
+  handleCart: PropTypes.func.isRequired,
 };
 
 export default Case;

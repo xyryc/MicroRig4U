@@ -1,4 +1,8 @@
-const Header = () => {
+import PropTypes from "prop-types";
+
+const Header = ({ cartItems }) => {
+  console.log(cartItems);
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -49,7 +53,6 @@ const Header = () => {
           </button>
 
           {/* cart button */}
-
           <div className="dropdown dropdown-end">
             <div
               tabIndex="0"
@@ -66,7 +69,6 @@ const Header = () => {
                 >
                   <path
                     strokeLinecap="round"
-                    stroke
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
@@ -77,10 +79,15 @@ const Header = () => {
             </div>
             <div
               tabIndex="0"
-              className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow-2xl rounded-none"
+              className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 lg:w-72 shadow-2xl rounded-none"
             >
               <div className="card-body">
                 <span className="text-lg font-bold">8 Items</span>
+                <span>
+                  {cartItems.map((item) => (
+                    <p key={item.product_id}>{item.product_name} : {item.price} </p>
+                  ))}
+                </span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
                   <button className="btn  rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400">
@@ -94,6 +101,10 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  cartItems: PropTypes.array.isRequired,
 };
 
 export default Header;
