@@ -1,3 +1,9 @@
 # Live Preview
 
-Link: [MicroRig4U](microrig4u.surge.sh)
+Link: [MicroRig4U](https://microrig4u.surge.sh)
+
+
+
+# Todos
+- add to cart functionality ✅
+- add remove from cart functionality
