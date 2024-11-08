@@ -1,8 +1,4 @@
-import PropTypes from "prop-types";
-
-const Header = ({ cartItems }) => {
-  console.log(cartItems);
-
+const Header = () => {
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -74,9 +70,7 @@ const Header = ({ cartItems }) => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">
-                  {cartItems.length}
-                </span>
+                <span className="badge badge-sm indicator-item">0</span>
               </div>
             </div>
             <div
@@ -84,16 +78,12 @@ const Header = ({ cartItems }) => {
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 lg:w-80 shadow-2xl rounded-none"
             >
               <div className="card-body">
-                <span className="text-lg font-bold">
-                  {cartItems.length} Items
-                </span>
+                <span className="text-lg font-bold">0 Items</span>
                 <span>
-                  {cartItems.map((item) => (
-                    <p key={item.product_id} className="flex justify-between border-b">
-                      <span>{item.product_name}</span>
-                      <span>{item.price} BDT</span>
-                    </p>
-                  ))}
+                  <p className="flex justify-between border-b">
+                    <span>Name</span>
+                    <span>Price 0 BDT</span>
+                  </p>
                 </span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
@@ -108,10 +98,6 @@ const Header = ({ cartItems }) => {
       </div>
     </div>
   );
-};
-
-Header.propTypes = {
-  cartItems: PropTypes.array.isRequired,
 };
 
 export default Header;

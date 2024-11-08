@@ -1,30 +1,18 @@
-import { useState, useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
 import Case from "./Case";
-import PropTypes from "prop-types";
 
-
-const Cases = ({handleCart}) => {
-  const [cases, setCases] = useState([]);
-
-  useEffect(() => {
-    fetch("sff-case.json")
-      .then((res) => res.json())
-      .then((data) => setCases(data));
-  }, []);
+const Cases = () => {
+  const cases = useLoaderData();
 
   return (
     <div className="py-10 px-4">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3">
         {cases.map((caseItem) => (
-          <Case key={caseItem.product_id} caseItem={caseItem}  handleCart={handleCart}/>
+          <Case key={caseItem.product_id} caseItem={caseItem} />
         ))}
       </div>
     </div>
   );
 };
-
-Cases.propTypes = {
-  handleCart: PropTypes.func.isRequired
-}
 
 export default Cases;
