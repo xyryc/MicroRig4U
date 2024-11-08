@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.font-fira-code {
+.font-fira {
   font-family: "Fira Code", monospace;
+}
+
+html{
+  overflow-y: scroll;
 }
