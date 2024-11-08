@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../layouts/MainLayout";
 
 const Header = () => {
-  
+  const [cart] = useContext(CartContext);
+
+  const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
 
   return (
     <div>
@@ -76,7 +80,9 @@ const Header = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">0</span>
+                <span className="badge badge-sm indicator-item">
+                  {cart.length}
+                </span>
               </div>
             </div>
             <div
@@ -84,14 +90,22 @@ const Header = () => {
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 lg:w-80 shadow-2xl rounded-none"
             >
               <div className="card-body">
-                <span className="text-lg font-bold">0 Items</span>
+                <span className="text-lg font-bold">{cart.length} Items</span>
                 <span>
-                  <p className="flex justify-between border-b">
-                    <span>Name</span>
-                    <span>Price 0 BDT</span>
-                  </p>
+                  {cart.map((item) => (
+                    <p
+                      key={item.product_id}
+                      className="flex justify-between border-b"
+                    >
+                      <span>{item.product_name}</span>
+                      <span>৳ {item.price}</span>
+                    </p>
+                  ))}
                 </span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="flex justify-between">
+                  <span className="text-info">Subtotal: </span>
+                  <span className="text-info">৳ {totalPrice}</span>
+                </span>
                 <div className="card-actions">
                   <button className="btn  rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400">
                     Checkout
