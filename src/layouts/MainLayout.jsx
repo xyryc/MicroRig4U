@@ -8,13 +8,14 @@ export const CartContext = createContext();
 const MainLayout = () => {
   const [cart, setCart] = useState([]);
 
-
   return (
     <div className="font-fira container mx-auto">
       <CartContext.Provider value={[cart, setCart]}>
         <Header />
 
-        <Outlet />
+        <div className="py-10 px-4">
+          <Outlet />
+        </div>
 
         <Footer />
       </CartContext.Provider>

@@ -2,12 +2,13 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import { CartContext } from "../layouts/MainLayout";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Case = ({ caseItem }) => {
   const { pathname } = useLocation();
 
   const {
+    product_id,
     product_image,
     product_name,
     color,
@@ -58,9 +59,12 @@ const Case = ({ caseItem }) => {
       </p>
 
       <div className="flex gap-6 items-center pt-2">
-        <button className="btn rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400">
+        <Link
+          to={`/caseDetails/${product_id}`}
+          className="btn rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400"
+        >
           Details
-        </button>
+        </Link>
 
         <button
           onClick={() => handleCart(caseItem)}

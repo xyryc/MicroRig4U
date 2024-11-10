@@ -107,9 +107,9 @@ const Header = () => {
                   <span className="text-info">৳ {totalPrice}</span>
                 </span>
                 <div className="card-actions">
-                  <button className="btn  rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400">
-                    Checkout
-                  </button>
+                  <NavLink to='/cart' className="btn  rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400">
+                    Check Cart
+                  </NavLink>
                 </div>
               </div>
             </div>
