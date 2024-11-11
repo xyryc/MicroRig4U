@@ -4,6 +4,8 @@ import Cases from "../components/Cases";
 import About from "../pages/About";
 import Cart from "../pages/Cart";
 import CaseDetails from "../pages/CaseDetails";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 const routes = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const routes = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/about",

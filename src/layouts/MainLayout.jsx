@@ -13,7 +13,7 @@ const MainLayout = () => {
       <CartContext.Provider value={[cart, setCart]}>
         <Header />
 
-        <div className="py-10 px-4">
+        <div className="py-10 px-4 min-h-[calc(100vh-320px)]">
           <Outlet />
         </div>
 

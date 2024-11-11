@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../layouts/MainLayout";
+import { BiTrash } from "react-icons/bi";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Header = () => {
   const [cart] = useContext(CartContext);
+  const { name } = useContext(AuthContext);
 
   const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
 
@@ -43,6 +46,12 @@ const Header = () => {
                 <NavLink to={`/cart`}>Cart</NavLink>
               </li>
               <li>
+                <NavLink to={`/login`}>Login</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/register`}>Register</NavLink>
+              </li>
+              <li>
                 <NavLink to={`/about`}>About</NavLink>
               </li>
             </ul>
@@ -54,10 +63,6 @@ const Header = () => {
           </NavLink>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-ghost rounded-none">
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-
           {/* cart button */}
           <div className="dropdown dropdown-end">
             <div
@@ -90,29 +95,78 @@ const Header = () => {
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 lg:w-80 shadow-2xl rounded-none"
             >
               <div className="card-body">
-                <span className="text-lg font-bold">{cart.length} Items</span>
-                <span>
-                  {cart.map((item) => (
-                    <p
-                      key={item.product_id}
-                      className="flex justify-between border-b"
-                    >
-                      <span>{item.product_name}</span>
-                      <span>৳ {item.price}</span>
-                    </p>
-                  ))}
-                </span>
-                <span className="flex justify-between">
-                  <span className="text-info">Subtotal: </span>
-                  <span className="text-info">৳ {totalPrice}</span>
-                </span>
-                <div className="card-actions">
-                  <NavLink to='/cart' className="btn  rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400">
-                    Check Cart
-                  </NavLink>
-                </div>
+                {cart.length > 0 ? (
+                  <div>
+                    {" "}
+                    <span className="text-lg font-bold">
+                      {cart.length} Items
+                    </span>
+                    <span>
+                      {cart.map((item) => (
+                        <p
+                          key={item.product_id}
+                          className="flex justify-between border-b py-1"
+                        >
+                          <span>{item.product_name}</span>
+                          <span className="flex items-center gap-3">
+                            ৳ {item.price}
+                            <BiTrash className="cursor-pointer" />
+                          </span>
+                        </p>
+                      ))}
+                    </span>
+                    <span className="flex justify-between py-2">
+                      <span className="text-info">Subtotal: </span>
+                      <span className="text-info">৳ {totalPrice}</span>
+                    </span>
+                    <div className="card-actions">
+                      <NavLink
+                        to="/cart"
+                        className="btn  rounded-none px-4 py-1 border-2 border-y-gray-700 border-x-gray-400"
+                      >
+                        Check Cart
+                      </NavLink>
+                    </div>
+                  </div>
+                ) : (
+                  "No Items in cart"
+                )}
               </div>
             </div>
+          </div>
+
+          {/* profile icon */}
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                />
+              </div>
+            </div>
+
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-none z-[1] mt-3 w-52 p-2 shadow-xl"
+            >
+              <li>
+                <a className="justify-between">
+                  {name}
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a>Logout</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

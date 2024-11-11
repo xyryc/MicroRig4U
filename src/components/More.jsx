@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const More = ({ item }) => {
-  const { product_image, product_name, color, price } = item;
+  const { product_id, product_image, product_name, color, price } = item;
 
   return (
-    <div className="flex gap-4">
+    <Link to={`/caseDetails/${product_id}`} className="flex gap-4">
       <img
         src={product_image}
         alt={product_name}
@@ -19,7 +20,7 @@ const More = ({ item }) => {
           Color: <span className="font-light">{color}</span>
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

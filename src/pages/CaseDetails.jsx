@@ -31,9 +31,9 @@ const CaseDetails = () => {
   return (
     <div className="grid lg:grid-cols-8 lg:gap-6">
       {/* case details */}
-      <div className="lg:col-span-6">
-        <img className="h-96" src={product_image} alt={product_name} />
-        <h2 className="font-bold text-3xl my-3">{product_name}</h2>
+      <div className="lg:col-span-6 tracking-tighter">
+        <img className="h-96 mx-auto" src={product_image} alt={product_name} />
+        <h2 className="font-bold text-3xl my-4">{product_name}</h2>
 
         <p className="border-y-2 font-semibold py-1">
           Price: <span className="font-normal">{price}</span> BDT
