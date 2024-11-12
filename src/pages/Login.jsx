@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { signInUser, signInWithGoogle } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,16 +21,37 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         toast.success(`Logged in as ${result.user.email}`);
+        // clear the form
+        e.target.reset();
+
+        navigate("/");
       })
       .catch((error) => {
         console.log("ERROR", error.message);
       });
   };
 
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+    .then(result => {
+      console.log(result.user)
+      navigate('/')
+      toast.success(`Logged in as ${result.user.email}`)
+    })
+    .catch(error => {
+      console.log(error.message)
+    })
+  }
+
   return (
     <div className="hero">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 drop-shadow-2xl rounded-none">
-        <form onSubmit={handleLogin} className="card-body">
+        <button onClick={handleGoogleSignIn} className="btn btn-outline mb-4 mx-8 mt-8">
+          <FcGoogle />
+          Google
+        </button>
+
+        <form onSubmit={handleLogin} className="card-body pt-0">
           <div className="form-control ">
             <label className="label">
               <span className="label-text">Email</span>

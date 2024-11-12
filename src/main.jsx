@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={routes} />
-      <Toaster toastOptions={{ className: "font-fira" }} />
+      <Toaster toastOptions={{ className: "font-fira tracking-tighter" }} />
     </AuthProvider>
   </StrictMode>
 );

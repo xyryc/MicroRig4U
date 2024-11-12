@@ -1,37 +1,45 @@
+/* eslint-disable react/prop-types */
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase.init";
 
 export const AuthContext = createContext(null);
+const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // register user
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // sign in user
   const signInUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+  // sign in with google 
+  const signInWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider)
+  }
 
   // get currently logged in user
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        console.log("Currently logged in user", currentUser);
-        setUser(currentUser);
-      } else {
-        console.log("No user logged in.");
-        setUser(null);
-      }
+      console.log("Currently logged in user", currentUser);
+      setUser(currentUser);
+      setLoading(false);
     });
 
     // component unmount/ cleanup function
@@ -42,13 +50,16 @@ const AuthProvider = ({ children }) => {
 
   // sign out user
   const signOutUser = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
   const authInfo = {
     user,
+    loading, 
     createUser,
     signInUser,
+    signInWithGoogle,
     signOutUser,
   };
 
