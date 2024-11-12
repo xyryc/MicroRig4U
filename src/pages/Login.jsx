@@ -3,10 +3,12 @@ import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { signInUser, signInWithGoogle } = useContext(AuthContext);
+  const { signInUser, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -43,6 +45,20 @@ const Login = () => {
       });
   };
 
+  const handleGithubSignIn = () => {
+    signInWithGithub()
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+        toast.success(
+          `Logged in as ${result.user.email || result.user.displayName}`
+        );
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="hero">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 drop-shadow-2xl rounded-none">
@@ -51,6 +67,10 @@ const Login = () => {
           <button onClick={handleGoogleSignIn} className="btn btn-outline">
             <FcGoogle />
             Google
+          </button>
+          <button onClick={handleGithubSignIn} className="btn btn-outline">
+            <FaGithub />
+            Github
           </button>
 
           <div className="form-control ">

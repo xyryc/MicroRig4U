@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import Cart from "./Cart";
 import DefaultAvatar from "../assets/avatar-default.png";
 
 const Profile = () => {
@@ -46,11 +45,12 @@ const Profile = () => {
 
       {/* Main Content */}
       <div className="mt-4">
-        {activeTab === "orders" && <Cart />}
-        {activeTab === "wishlist" && <Cart />}
-        {/* {activeTab === "settings" && <Settings />}
-        {activeTab === "address" && <AddressBook />}
-        {activeTab === "payment" && <PaymentMethods />} */}
+        {activeTab === "orders" && "work in progress"}
+        {/* {activeTab === "wishlist" && <Cart />} */}
+        {activeTab === "wishlist" && "work in progress"}
+        {activeTab === "settings" && "work in progress"}
+        {activeTab === "address" && "work in progress"}
+        {activeTab === "payment" && "work in progress"}
       </div>
     </div>
   );

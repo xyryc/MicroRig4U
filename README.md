@@ -10,6 +10,7 @@ Link: [MicroRig4U](https://microrig4u.surge.sh)
 - Cart functionality
 - Firebase Sign Up, Sign Out functionality
 - Google auth Sign In
+- Profile Page
 
 ### Todos
 
@@ -17,6 +18,7 @@ Link: [MicroRig4U](https://microrig4u.surge.sh)
 - add sign up, login functionality ✅
 - google auth login ✅
 - email verification 
-- profile page
+- profile page ✅
 - remove from cart functionality
 - profile edit
+- add github login
