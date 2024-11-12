@@ -6,7 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const Header = () => {
   const [cart] = useContext(CartContext);
-  const { name } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
 
@@ -156,8 +156,7 @@ const Header = () => {
             >
               <li>
                 <a className="justify-between">
-                  {name}
-                  <span className="badge">New</span>
+                  {user ? user.email : 'Not logged in' }
                 </a>
               </li>
               <li>
