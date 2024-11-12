@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
+        toast.success(`Logged in as ${result.user.email}`);
       })
       .catch((error) => {
         console.log("ERROR", error.message);

@@ -1,14 +1,25 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CartContext } from "../layouts/MainLayout";
 import { BiTrash } from "react-icons/bi";
 import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const [cart] = useContext(CartContext);
-  const { user } = useContext(AuthContext);
+  const { user, signOutUser } = useContext(AuthContext);
 
   const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("User logged out successfully!");
+      })
+      .catch((error) => {
+        console.log("ERROR", error.message);
+      });
+  };
 
   return (
     <div>
@@ -42,15 +53,14 @@ const Header = () => {
               <li>
                 <NavLink to={`/`}>Home</NavLink>
               </li>
-              <li>
-                <NavLink to={`/cart`}>Cart</NavLink>
-              </li>
-              <li>
-                <NavLink to={`/login`}>Login</NavLink>
-              </li>
-              <li>
-                <NavLink to={`/register`}>Register</NavLink>
-              </li>
+
+              {user && (
+                <>
+                  <li>
+                    <NavLink to={`/profile`}>Profile</NavLink>
+                  </li>
+                </>
+              )}
               <li>
                 <NavLink to={`/about`}>About</NavLink>
               </li>
@@ -140,7 +150,9 @@ const Header = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className={`btn btn-ghost btn-circle avatar ${
+                user ? "online" : "offline"
+              } `}
             >
               <div className="w-10 rounded-full">
                 <img
@@ -154,17 +166,22 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-none z-[1] mt-3 w-52 p-2 shadow-xl"
             >
-              <li>
-                <a className="justify-between">
-                  {user ? user.email : 'Not logged in' }
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
+              {user ? (
+                <>
+                  <li>
+                    <a onClick={handleSignOut}>Logout</a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/register">Register</Link>
+                  </li>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
