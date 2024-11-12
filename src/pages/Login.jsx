@@ -33,25 +33,26 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-    .then(result => {
-      console.log(result.user)
-      navigate('/')
-      toast.success(`Logged in as ${result.user.email}`)
-    })
-    .catch(error => {
-      console.log(error.message)
-    })
-  }
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+        toast.success(`Logged in as ${result.user.email}`);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <div className="hero">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 drop-shadow-2xl rounded-none">
-        <button onClick={handleGoogleSignIn} className="btn btn-outline mb-4 mx-8 mt-8">
-          <FcGoogle />
-          Google
-        </button>
+        <form onSubmit={handleLogin} className="card-body">
+          <h2 className="text-2xl text-center font-semibold">Log In</h2>
+          <button onClick={handleGoogleSignIn} className="btn btn-outline">
+            <FcGoogle />
+            Google
+          </button>
 
-        <form onSubmit={handleLogin} className="card-body pt-0">
           <div className="form-control ">
             <label className="label">
               <span className="label-text">Email</span>

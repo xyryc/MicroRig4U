@@ -4,6 +4,7 @@ import { CartContext } from "../layouts/MainLayout";
 import { BiTrash } from "react-icons/bi";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import DefaultAvatar from "../assets/avatar-default.png";
 
 const Header = () => {
   const [cart] = useContext(CartContext);
@@ -149,8 +150,9 @@ const Header = () => {
             >
               <div className="w-10 rounded-full">
                 <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  className="object-cover"
+                  alt={user?.displayName}
+                  src={user?.photoURL || DefaultAvatar}
                 />
               </div>
             </div>

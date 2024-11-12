@@ -15,6 +15,8 @@ Link: [MicroRig4U](https://microrig4u.surge.sh)
 
 - add to cart functionality ✅
 - add sign up, login functionality ✅
-- google auth login
+- google auth login ✅
 - email verification 
-- add remove from cart functionality
+- profile page
+- remove from cart functionality
+- profile edit
