@@ -1,5 +1,6 @@
 # Live Preview
 
+Link: [MicroRig4U](https://microrig4u.vercel.app)<br>
 Link: [MicroRig4U](https://microrig4u.surge.sh)
 
 ### Features
@@ -8,8 +9,7 @@ Link: [MicroRig4U](https://microrig4u.surge.sh)
 - Private Route
 - Fetch JSON data
 - Cart functionality
-- Firebase Sign Up, Sign Out functionality
-- Google auth Sign In
+- Google, Github auth sign in, sign out
 - Profile Page
 
 ### Todos
@@ -17,7 +17,7 @@ Link: [MicroRig4U](https://microrig4u.surge.sh)
 - add to cart functionality ✅
 - add sign up, login functionality ✅
 - google auth login ✅
-- email verification 
+- email verification
 - profile page ✅
 - remove from cart functionality
 - profile edit

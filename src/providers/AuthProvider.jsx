@@ -7,13 +7,16 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  TwitterAuthProvider,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase.init";
 
 export const AuthContext = createContext(null);
+
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -38,6 +41,10 @@ const AuthProvider = ({ children }) => {
 
   const signInWithGithub = () => {
     return signInWithPopup(auth, githubProvider);
+  };
+
+  const signInWithTwitter = () => {
+    return signInWithPopup(auth, twitterProvider);
   };
 
   // get currently logged in user
@@ -67,6 +74,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signInWithGoogle,
     signInWithGithub,
+    signInWithTwitter,
     signOutUser,
   };
 

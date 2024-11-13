@@ -4,10 +4,11 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { signInUser, signInWithGoogle, signInWithGithub } =
+  const { signInUser, signInWithGoogle, signInWithGithub, signInWithTwitter } =
     useContext(AuthContext);
 
   const handleLogin = (e) => {
@@ -59,16 +60,46 @@ const Login = () => {
       });
   };
 
+  const handleTwitterSignIn = () => {
+    signInWithTwitter()
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+        toast.success(
+          `Logged in ${result.user.email || result.user.displayName}`
+        );
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="hero">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 drop-shadow-2xl rounded-none">
         <form onSubmit={handleLogin} className="card-body">
           <h2 className="text-2xl text-center font-semibold">Log In</h2>
-          <button onClick={handleGoogleSignIn} className="btn btn-outline">
+          <button
+            onClick={handleTwitterSignIn}
+            className="btn btn-outline"
+            type="button"
+          >
+            <FaTwitter />
+            Twitter
+          </button>
+          <button
+            onClick={handleGoogleSignIn}
+            className="btn btn-outline"
+            type="button"
+          >
             <FcGoogle />
             Google
           </button>
-          <button onClick={handleGithubSignIn} className="btn btn-outline">
+          <button
+            onClick={handleGithubSignIn}
+            className="btn btn-outline"
+            type="button"
+          >
             <FaGithub />
             Github
           </button>
