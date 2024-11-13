@@ -9,7 +9,7 @@ const More = ({ item }) => {
       <img
         src={product_image}
         alt={product_name}
-        className="h-20 object-cover"
+        className="w-20 object-scale-down"
       />
       <div className="tracking-tighter">
         <h4 className="font-medium">{product_name}</h4>

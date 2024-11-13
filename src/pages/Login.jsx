@@ -81,7 +81,7 @@ const Login = () => {
           <h2 className="text-2xl text-center font-semibold">Log In</h2>
           <button
             onClick={handleTwitterSignIn}
-            className="btn btn-outline"
+            className="btn btn-outline rounded-none"
             type="button"
           >
             <FaTwitter />
@@ -89,7 +89,7 @@ const Login = () => {
           </button>
           <button
             onClick={handleGoogleSignIn}
-            className="btn btn-outline"
+            className="btn btn-outline rounded-none"
             type="button"
           >
             <FcGoogle />
@@ -97,7 +97,7 @@ const Login = () => {
           </button>
           <button
             onClick={handleGithubSignIn}
-            className="btn btn-outline"
+            className="btn btn-outline rounded-none"
             type="button"
           >
             <FaGithub />
@@ -133,12 +133,14 @@ const Login = () => {
                 Forgot password?
               </a>
             </label>
-            <p className="tracking-tighter text-red-500">
+            {/* <p className="tracking-tighter text-red-500">
               Error Occured while logging in
-            </p>
+            </p> */}
           </div>
-          <div className="form-control mt-2">
-            <button className="btn btn-primary  rounded-none">Log In</button>
+          <div className="form-control mt-3">
+            <button className="btn bg-blue-500 border-none text-white rounded-none">
+              Log In
+            </button>
           </div>
         </form>
       </div>

@@ -72,12 +72,12 @@ const Register = () => {
               required
             />
 
-            <p className="tracking-tighter text-red-500 my-2">
+            {/* <p className="tracking-tighter text-red-500 mt-2">
               Error Occured while registering
-            </p>
+            </p> */}
           </div>
-          <div className="form-control ">
-            <button className="btn btn-primary  rounded-none">Register</button>
+          <div className="form-control mt-3">
+            <button className="btn bg-blue-500 border-none text-white rounded-none">Register</button>
           </div>
         </form>
       </div>

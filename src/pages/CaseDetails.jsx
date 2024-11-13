@@ -32,7 +32,11 @@ const CaseDetails = () => {
     <div className="grid lg:grid-cols-8 lg:gap-6">
       {/* case details */}
       <div className="lg:col-span-6 tracking-tighter">
-        <img className="h-96 mx-auto" src={product_image} alt={product_name} />
+        <img
+          className="h-96 mx-auto object-cover"
+          src={product_image}
+          alt={product_name}
+        />
         <h2 className="font-bold text-3xl my-4">{product_name}</h2>
 
         <p className="border-y-2 font-semibold py-1">

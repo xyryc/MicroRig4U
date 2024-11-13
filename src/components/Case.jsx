@@ -33,7 +33,7 @@ const Case = ({ caseItem }) => {
 
   return (
     <div className="border p-10 space-y-1">
-      <img src={product_image} alt={`product image of ${product_name}`} />
+      <img className="h-[375px] object-scale-down" src={product_image} alt={`product image of ${product_name}`} />
       <h1 className="text-xl font-semibold ">{caseItem.product_name}</h1>
       <p className="space-x-3">
         <span className="tracking-tighter font-medium">
